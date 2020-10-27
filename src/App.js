@@ -7,13 +7,15 @@ import { buttonStyles, HandleIcon } from './Handle'
 
 function App() {
   const [items, setItems] = React.useState(
-    Array.from(Array(100).keys()).map((val) => `Item ${val}`)
+    Array.from(Array(40).keys()).map((val) => `Item ${val}`)
   );
   return (
     <div className="App">
       <div className={'container'}>
         <div className={'header'} />
         <List
+          lockVertically={false}
+          transitionDuration={600}
           values={items}
           onChange={({ oldIndex, newIndex }) =>
             setItems(arrayMove(items, oldIndex, newIndex))
@@ -24,7 +26,7 @@ function App() {
               style={{
                 padding: 0,
                 cursor: isDragged ? 'grabbing' : undefined,
-                height: 300,
+                height: 400,
                 overflowY: 'scroll',
                 overflowX: 'hidden',
               }}
